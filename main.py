@@ -4,6 +4,8 @@ from pymongo import MongoClient
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from pymongo import MongoClient
+import os
 
 iris = load_iris() # Veri Seti -> Data Frame
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
@@ -12,7 +14,8 @@ df['target'] = iris.target
 print("Veri hazırlandı, satır sayısı:", df.shape[0])
 print(df.head())
 
-client = MongoClient("mongodb://localhost:27017/") # MongoDB bağlantısı
+# MongoDB Bağlantısı
+client = MongoClient("mongodb+srv://emrersinn00:IDl5GpJHazBR7TY0@mlsimple.slki97k.mongodb.net/ml_simple?retryWrites=true&w=majority&appName=mlSimple")
 db = client["ml_simple"]
 collection = db["iris_dataset"]
 
